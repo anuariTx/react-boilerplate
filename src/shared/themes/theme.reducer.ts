@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { ActionInterface } from '@interfaces/action.interface';
+import { IAction } from '@interfaces/action.interface';
 import { changeThemeAction } from '@themes/theme.action';
 
 export interface ThemeStateInterface {
@@ -18,7 +18,7 @@ export const themeReducer = handleActions(
       ...state,
       isLoadingTheme: true,
     }),
-    [changeThemeAction.FULFILL]: (state: ThemeStateInterface, { payload }: ActionInterface) => ({
+    [changeThemeAction.FULFILL]: (state: ThemeStateInterface, { payload }: IAction) => ({
       activeTheme: payload.theme,
       isLoadingTheme: false,
     }),

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { MatchInterface } from '@interfaces/match.interface';
+import { IMatch } from '@interfaces/match.interface';
 
 import { NavigationMenuComponent } from '@layout/navigation-menu/navigation-menu.component';
 
-type NavigationMenuContainerProps = {
-  match: MatchInterface;
+interface INavigationMenuContainerProps {
+  match: IMatch;
 };
 
-export const NavigationMenuContainer = ({ match }: NavigationMenuContainerProps) => {
+export const NavigationMenuContainer = ({ match }: INavigationMenuContainerProps) => {
   return <NavigationMenuComponent match={match} />;
 };

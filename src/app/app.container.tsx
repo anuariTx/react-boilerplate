@@ -5,43 +5,29 @@ import { routerHistory } from '@routes/router.history';
 import { AppRoutes } from '@routes/app.routes';
 
 import { connect } from 'react-redux';
-import { AppStateInterface } from '@rdx/root.reducer';
+import { IAppState } from '@rdx/root.reducer';
 
 import { ThemeProvider } from 'react-jss';
 import { configRootTheme } from '@themes/root.theme';
 
-import { AboutComponent } from './about/about.component';
-import { ProjectContainer } from './projects/projects.container';
-import { SkillsComponent } from './skills/skills.component';
-import { FactsComponent } from './facts/facts.component';
-import { FooterComponent } from './../shared/layout/footer/footer.component';
+import { FooterComponent } from '@layout/footer/footer.component';
 
-import './normalize.styles.css';
-
-type AppProps = {
+export interface IAppContainerProps {
   theme: string;
 };
 
-const App = ({ theme }: AppProps) => {
+const App = ({ theme }: IAppContainerProps) => {
   return (
     <Router history={routerHistory}>
-      <ThemeProvider theme={configRootTheme(theme)}>
-        <div>
+      <ThemeProvider theme={configRootTheme(theme)}>        
           <AppRoutes />
-          <section className="landing-page">
-            <AboutComponent />
-            <ProjectContainer />
-            <SkillsComponent />
-            <FactsComponent />
-          </section>
           <FooterComponent />
-        </div>
       </ThemeProvider>
     </Router>
   );
 };
 
-const mapStateToProps = (state: AppStateInterface) => ({
+const mapStateToProps = (state: IAppState) => ({
   theme: state.theme.activeTheme,
 });
 

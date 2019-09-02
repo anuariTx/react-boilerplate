@@ -1,4 +1,4 @@
-export const DarkTheme = {
+export const DarkTheme: any = {
   mainBackground: '#1c1c1c',
   mainText: '#fff',
   container: {
