@@ -19,6 +19,7 @@ export interface IAppContainerProps {
 const App = ({ theme }: IAppContainerProps) => {
   return (
     <Router history={routerHistory}>
+      //@ts-ignore
       <ThemeProvider theme={configRootTheme(theme)}>        
           <AppRoutes />
           <FooterComponent />

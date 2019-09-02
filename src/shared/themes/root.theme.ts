@@ -1,9 +1,9 @@
 import { DarkTheme } from './dark.theme';
 
-const THEMES = {
+const THEMES: any = {
   darkTheme: DarkTheme
 };
 
-export const configRootTheme = (activeTheme: string) => {
+export const configRootTheme: any = (activeTheme: string): any => {
   return THEMES[activeTheme];
 };
