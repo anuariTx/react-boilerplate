@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
+import { IAppState } from '@rdx/root.reducer';
 
 import { Router } from 'react-router-dom';
 import { routerHistory } from '@routes/router.history';
 import { AppRoutes } from '@routes/app.routes';
 
 import { connect } from 'react-redux';
-import { IAppState } from '@rdx/root.reducer';
 
 import { ThemeProvider } from 'react-jss';
 import { configRootTheme } from '@themes/root.theme';
@@ -17,12 +18,15 @@ export interface IAppContainerProps {
 };
 
 const App = ({ theme }: IAppContainerProps) => {
+  const activeTheme = configRootTheme(theme);
+
   return (
     <Router history={routerHistory}>
-      //@ts-ignore
-      <ThemeProvider theme={configRootTheme(theme)}>        
+      <ThemeProvider theme={activeTheme}>
+        <Fragment>
           <AppRoutes />
           <FooterComponent />
+        </Fragment>
       </ThemeProvider>
     </Router>
   );

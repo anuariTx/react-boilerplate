@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import { ThemeStateInterface, themeReducer } from '@themes/theme.reducer';
+import { IThemeState, themeReducer } from '@themes/theme.reducer';
 
 export interface IAppState {
-  theme: ThemeStateInterface;
+  theme: IThemeState;
 }
 
 export const RootReducer = combineReducers<IAppState>({

@@ -4,6 +4,6 @@ const THEMES: any = {
   darkTheme: DarkTheme
 };
 
-export const configRootTheme: any = (activeTheme: string): any => {
+export const configRootTheme: any = (activeTheme: string) => {
   return THEMES[activeTheme];
 };

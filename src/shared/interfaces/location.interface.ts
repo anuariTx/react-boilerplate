@@ -3,11 +3,9 @@ export interface ILocation {
   pathname: string;
   search: string;
   hash: string;
-  state: ILocationState;
-}
-
-export interface ILocationState {
-  referrer: {
-    pathname: string;
-  };
+  state: {
+    referrer: {
+      pathname: string;
+    }
+  }
 }

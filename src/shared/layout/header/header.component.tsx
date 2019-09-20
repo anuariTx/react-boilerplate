@@ -4,27 +4,25 @@ import { RouteComponentProps, withRouter } from 'react-router';
 
 import injectSheet from 'react-jss';
 
-import './header.styles.css';
-
 interface IHeaderComponentProps extends RouteComponentProps {
-  classes: { header: string };
+  classes: any;
 }
 
-const styles = (theme: any) => ({
+const headerStyles = (theme: any) => ({
   header: {
     background: theme.mainBackground,
     color: theme.mainText,
   },
 });
 
-export const Header = ({ classes }: IHeaderComponentProps) => {
+export const Header = (props: IHeaderComponentProps) => {
   return (
-    <header id="header" className="header">
+    <header>
 
     </header>
-  );
+  )
 };
 
-const StyledHeader = injectSheet(styles)(Header);
+const StyledHeader = injectSheet(headerStyles)(Header);
 
 export const HeaderComponent = withRouter(StyledHeader);
