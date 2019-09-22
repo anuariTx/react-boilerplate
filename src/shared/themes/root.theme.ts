@@ -1,4 +1,4 @@
-import { DarkTheme } from './dark.theme';
+import { DarkTheme } from './presets/dark.theme';
 
 const THEMES: any = {
   darkTheme: DarkTheme

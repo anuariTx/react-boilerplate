@@ -7,6 +7,7 @@ import { routerHistory } from '@routes/router.history';
 import { AppRoutes } from '@routes/app.routes';
 
 import { connect } from 'react-redux';
+import { ThemeSelector } from '@shared/themes/theme.selector';
 
 import { ThemeProvider } from 'react-jss';
 import { configRootTheme } from '@themes/root.theme';
@@ -16,6 +17,8 @@ import { FooterComponent } from '@layout/footer/footer.component';
 export interface IAppContainerProps {
   theme: string;
 };
+
+const themeSelector: any = new ThemeSelector();
 
 const App = ({ theme }: IAppContainerProps) => {
   const activeTheme = configRootTheme(theme);
@@ -33,7 +36,7 @@ const App = ({ theme }: IAppContainerProps) => {
 };
 
 const mapStateToProps = (state: IAppState) => ({
-  theme: state.theme.activeTheme,
+  theme: themeSelector.getActiveTheme(state),
 });
 
 export const AppContainer = connect(mapStateToProps)(App);
