@@ -6,6 +6,8 @@ import { store } from '@rdx/store.config';
 
 import { AppContainer } from '@app/app.container';
 
+import 'antd/dist/antd.css';
+
 ReactDOM.render(
   <ReduxProvider store={store}>
     <AppContainer />
