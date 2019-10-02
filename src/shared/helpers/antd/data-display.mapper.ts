@@ -1,3 +1,4 @@
+//@ts-ignore
 import camelize from 'camelize';
 
 export class AntdDataDisplayMapper {
@@ -13,7 +14,7 @@ export class AntdDataDisplayMapper {
         return keys.map((key: string) => ({ title: key, dataIndex: camelize(key), key: camelize(key) }))
     }
 
-    public getTableColumnFilter(filters: []) {
+    public getTableColumnFilter(filters: []): any {
         return filters.map(({ key, children }: any) => {
             const filter = { text: key, value: key };
             
@@ -25,7 +26,7 @@ export class AntdDataDisplayMapper {
         return data.map((item: any, index: number) => ({ key: index, ...item })) || [];
     }
 
-    public getTableDataWithChildren(data: []) {
+    public getTableDataWithChildren(data: []): any {
         return data.map(({ item, children }: any, index: number) => { 
             const row = { key: index, ...item };
 
