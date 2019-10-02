@@ -1,6 +1,6 @@
 import { baseTheme } from './base.theme';
 
-export const darkTheme = {
+export const lightTheme = {
     ...baseTheme,
-    menuBackground: '#296239'
+    menuBackground: '#f7ca4f'
 };

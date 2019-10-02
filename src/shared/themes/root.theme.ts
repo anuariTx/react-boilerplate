@@ -1,9 +1,11 @@
-import { DarkTheme } from './presets/dark.theme';
+import { lightTheme } from './presets/light.theme';
+import { darkTheme } from './presets/dark.theme';
 
-const THEMES: any = {
-  darkTheme: DarkTheme
+const themes: any = {
+  lightTheme,
+  darkTheme
 };
 
 export const configRootTheme: any = (activeTheme: string) => {
-  return THEMES[activeTheme];
+  return themes[activeTheme];
 };

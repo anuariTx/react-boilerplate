@@ -10,7 +10,7 @@ export interface IThemeState {
 }
 
 const INITIAL_STATE: IThemeState = {
-  activeTheme: 'darkTheme',
+  activeTheme: 'lightTheme',
   isLoadingTheme: false,
 };
 
