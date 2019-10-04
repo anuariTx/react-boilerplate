@@ -2,70 +2,104 @@ import React from 'react';
 
 import { IMatch } from '@interfaces/match.interface';
 
-import { Menu, Icon } from 'antd';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { AvatarMenuComponent } from './avatar.component';
 
-const { SubMenu } = Menu;
+import injectSheet from 'react-jss';
+
+import classNames from 'classnames';
+import { CLIENT_MENU_PATH } from '../../constants/paths';
 
 interface INavigationMenuComponentProps {
+  classes: any;
   match?: IMatch;
-};
+}
 
-export const NavigationMenuComponent = ({ match }: INavigationMenuComponentProps) => {
+const navigationMenuStyles = (theme: any) => ({
+  listStyles: {
+    width: 300,
+  },
+  listSectionStyles: {
+    paddingLeft: '33px !important',
+  },
+  listItemStyles: {
+    paddingTop: '5px !important',
+    paddingBottom: '5px !important',
+  },
+  listIconStyles: {
+    minWidth: '40px !important',
+  },
+  menuPaperStyles: {
+    overflow: 'hidden',
+    borderRight: 'none !important',
+    backgroundColor: `${theme.menuBackground} !important`,
+  },
+  menuSectionTitleStyles: {
+    fontWeight: 'bold !important',
+  },
+  menuItemTitleStyles: {
+    color: theme.black.main,
+  },
+});
+
+const NavigationMenu = ({ classes, match }: INavigationMenuComponentProps) => {
+  const {
+    listStyles,
+    listSectionStyles,
+    listItemStyles,
+    listIconStyles,
+    menuPaperStyles,
+    menuSectionTitleStyles,
+    menuItemTitleStyles,
+  } = classes;
+
+  const renderSideList = () => (
+    <div className={listStyles} role="presentation">
+      {CLIENT_MENU_PATH.map((menuItem: any, index: number) => {
+        return (
+          <List key={index}>
+            <ListItem
+              button
+              key={menuItem.title}
+              classes={{ root: classNames(listSectionStyles, listItemStyles) }}
+            >
+              {menuItem.icon && (
+                <ListItemIcon classes={{ root: listIconStyles }}>{menuItem.icon}</ListItemIcon>
+              )}
+              <ListItemText
+                classes={{ primary: classNames(menuSectionTitleStyles, menuItemTitleStyles) }}
+                primary={menuItem.title}
+              />
+            </ListItem>
+            {menuItem.children && (
+              <List>
+                {menuItem.children.map((item: any, index: number) => {
+                  return (
+                    <ListItem button key={index} classes={{ root: listItemStyles }}>
+                      <ListItemIcon>{item.icon || <div />}</ListItemIcon>
+                      <ListItemText
+                        classes={{ primary: menuItemTitleStyles }}
+                        primary={item.title}
+                      />
+                    </ListItem>
+                  );
+                })}
+              </List>
+            )}
+          </List>
+        );
+      })}
+    </div>
+  );
+
   return (
-    <Menu
-      style={{ width: 256 }}
-      defaultSelectedKeys={['1']}
-      defaultOpenKeys={['sub1']}
-      mode="inline"
-    >
-      <SubMenu
-        key="sub1"
-        title={
-          <span>
-            <Icon type="mail" />
-            <span>Data Entry</span>
-          </span>
-        }
-      >
-        <Menu.ItemGroup key="g1" title="Item 1">
-          <Menu.Item key="1">Cascader</Menu.Item>
-          <Menu.Item key="2">Option 2</Menu.Item>
-        </Menu.ItemGroup>
-        <Menu.ItemGroup key="g2" title="Item 2">
-          <Menu.Item key="3">Option 3</Menu.Item>
-          <Menu.Item key="4">Option 4</Menu.Item>
-        </Menu.ItemGroup>
-      </SubMenu>
-      <SubMenu
-        key="sub2"
-        title={
-          <span>
-            <Icon type="appstore" />
-            <span>Navigation Two</span>
-          </span>
-        }
-      >
-        <Menu.Item key="5">Option 5</Menu.Item>
-        <Menu.Item key="6">Option 6</Menu.Item>
-        <SubMenu key="sub3" title="Submenu">
-          <Menu.Item key="7">Option 7</Menu.Item>
-          <Menu.Item key="8">Option 8</Menu.Item>
-        </SubMenu>
-      </SubMenu>
-      <SubMenu
-        key="sub4"
-        title={
-          <span>
-            <Icon type="setting" />
-            <span>Navigation Three</span>
-          </span>
-        }
-      >
-        <Menu.Item key="9">Option 9</Menu.Item>
-        <Menu.Item key="10">Option 10</Menu.Item>
-        <Menu.Item key="11">Option 11</Menu.Item>
-        <Menu.Item key="12">Option 12</Menu.Item>
-      </SubMenu>
-    </Menu>
+    <div>
+      <Drawer classes={{ paper: menuPaperStyles }} variant="permanent" anchor="left">
+        <AvatarMenuComponent />
+        {renderSideList()}
+      </Drawer>
+    </div>
   );
 };
+
+export const NavigationMenuComponent = injectSheet(navigationMenuStyles)(NavigationMenu);
