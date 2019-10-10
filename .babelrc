@@ -11,6 +11,7 @@
           "@constants": "./src/shared/constants",
           "@img": "./src/shared/media/img",
           "@interfaces": "./src/shared/interfaces",
+          "@languages": "./src/shared/lang",
           "@layout": "./src/shared/layout",
           "@media": "./src/shared/media",
           "@rdx": "./src/shared/rdx",

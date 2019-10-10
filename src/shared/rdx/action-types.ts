@@ -1,4 +1,5 @@
 export const CHANGE_THEME = 'CHANGE_THEME';
+export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 
 export const SET_ERROR = 'SET_ERROR';
 export const CLEAR_ERROR = 'CLEAR_ERROR';

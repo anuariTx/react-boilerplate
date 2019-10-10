@@ -20,6 +20,7 @@
       "@constants/*": ["shared/constants/*"],
       "@img/*": ["shared/media/img/*"],
       "@interfaces/*": ["shared/interfaces/*"],
+      "@languages/*": ["shared/lang/*"],
       "@layout/*": ["shared/layout/*"],
       "@media/*": ["shared/media/*"],
       "@rdx/*": ["shared/rdx/*"],

@@ -7,6 +7,8 @@ import { AvatarMenuComponent } from './avatar.component';
 
 import injectSheet from 'react-jss';
 
+import { FormattedMessage } from 'react-intl';
+
 import classNames from 'classnames';
 import { CLIENT_MENU_PATH } from '../../constants/paths';
 
@@ -68,7 +70,7 @@ const NavigationMenu = ({ classes, match }: INavigationMenuComponentProps) => {
               )}
               <ListItemText
                 classes={{ primary: classNames(menuSectionTitleStyles, menuItemTitleStyles) }}
-                primary={menuItem.title}
+                children={<FormattedMessage id={menuItem.localeID} />}
               />
             </ListItem>
             {menuItem.children && (
@@ -79,7 +81,7 @@ const NavigationMenu = ({ classes, match }: INavigationMenuComponentProps) => {
                       <ListItemIcon>{item.icon || <div />}</ListItemIcon>
                       <ListItemText
                         classes={{ primary: menuItemTitleStyles }}
-                        primary={item.title}
+                        children={<FormattedMessage id={item.localeID} />}
                       />
                     </ListItem>
                   );
